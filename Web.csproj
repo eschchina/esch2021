@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E4C9F3C3-2549-4316-9F46-D65F324F3E85}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BuyEsch.html" />
+    <Content Include="Contract_sy.html" />
+    <Content Include="Css\mobilemain.css" />
+    <Content Include="En\BuyEsch.html" />
+    <Content Include="En\Contract_sy.html" />
+    <Content Include="En\HeYueAdd.html" />
+    <Content Include="En\HeYueRule.html" />
+    <Content Include="En\HYstatus.html" />
+    <Content Include="En\index.html" />
+    <Content Include="En\JiChengHY.html" />
+    <Content Include="En\Nodereward.html" />
+    <Content Include="En\SQAndLY.html" />
+    <Content Include="En\XuDanHeYue.html" />
+    <Content Include="En\YWCHeYue.html" />
+    <Content Include="HeYueAdd.html" />
+    <Content Include="HeYueRule.html" />
+    <Content Include="HYstatus.html" />
+    <Content Include="Images\banner.jpg" />
+    <Content Include="Images\ch.png" />
+    <Content Include="Images\Contract_bg.png" />
+    <Content Include="Images\en.png" />
+    <Content Include="Images\en_banner.jpg" />
+    <Content Include="Images\fx_tdpic1.png" />
+    <Content Include="Images\fx_tdpic2.png" />
+    <Content Include="Images\icon_0.png" />
+    <Content Include="Images\icon_0_0.png" />
+    <Content Include="Images\icon_1.png" />
+    <Content Include="Images\icon_1_1.png" />
+    <Content Include="Images\index_pic1.png" />
+    <Content Include="Images\index_pic2.png" />
+    <Content Include="Images\index_pic3.png" />
+    <Content Include="Images\jt_left.png" />
+    <Content Include="Images\jt_pic.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\new_pro.png" />
+    <Content Include="Images\node_banner.jpg" />
+    <Content Include="Images\Notice_pic.png" />
+    <Content Include="Images\problem_pic.png" />
+    <Content Include="Images\re_pic.png" />
+    <Content Include="Images\starky.png" />
+    <Content Include="Images\starsy.png" />
+    <Content Include="index.html" />
+    <Content Include="JiChengHY.html" />
+    <Content Include="JS\en_zh.js" />
+    <Content Include="JS\FT_zh.js" />
+    <Content Include="JS\jquery.js" />
+    <Content Include="JS\newweb3.min.js" />
+    <Content Include="JS\public.js" />
+    <Content Include="JS\startScore.js" />
+    <Content Include="JS\txpage.js" />
+    <Content Include="JS\web3.min.js" />
+    <Content Include="Nodereward.html" />
+    <Content Include="SQAndLY.html" />
+    <Content Include="Web.config" />
+    <Content Include="XuDanHeYue.html" />
+    <Content Include="YWCHeYue.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>35750</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

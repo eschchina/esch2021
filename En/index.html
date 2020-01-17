@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>ESCH homepage</title>
+
+    <link href="../Css/mobilemain.css" rel="stylesheet" />
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/web3.min.js"></script>
+    <script src="../JS/public.js"></script>
+</head>
+<body style="background-color: #5777ce;">
+    <form runat="server">
+    <div class="wrap">
+        <div class="main">
+            <div class="ES_logo">
+                <span onclick="changelan()">
+                    <img src="../Images/ch.png" /></span><img src="../Images/logo.png" />
+                <div class="clear"></div>
+            </div>
+            <div><a href="#">
+                <img src="../Images/en_banner.jpg" width="100%" /></a></div>
+            <div class="jmtopnews">
+                <div id="tgBigox">
+                    <div id="tgGoox">
+                                                 Contract ESCH28 day
+
+
+
+Participate in the rules
+
+1. The amount of participation shall be 2-20 ETH, and 2-10 ETH shall be opened in the early stage. The amount of participation shall be developed according to the automatic test rate of the price contract of ETH.
+
+Monthly income: 18.9%--27%;  
+
+After seven days, 10% of the principal of the contract can be sold, ETH second to their own cold wallet;  
+
+After 14 days, 20% of the contract principal can be sold, ETH second to their own cold wallet;  
+
+After 21 days, 65% of the principal of the contract can be sold, ETH second to their own cold wallet;  
+
+At the end of 28 days sell profit 23.9% buy is equal to or greater than the last contract into the next cycle, while sell contract 23.9% seconds to their own cold wallet.  
+
+Remark:
+
+(1) 24 hours limit to participate in an investment, full 24 hours income 0.9%, 21 days income cut-off.  
+
+(2) 1% ESCH token tokens will be automatically deducted as handling fee for entry and exit (for example, 100 tokens will be charged for investing 10 ETH). Token token is purchased from recommender or platform; The platform purchases ESCH token, 1ETH converts 1000 ESCH token, and 0.1 ETH converts the token. The ETH that buys ESCH goes into A contract wallet. The handling fee is calculated according to the value of ESCH.  
+
+
+
+2. When the total amount of the contract ore pool decreases from high to low, the total amount to 5000ETH will be distributed in the ESCH of other values. Users will receive a market value of less than 5-10% of ESCH5 value.
+
+
+
+3. When the total amount of etherefang reaches 1 million ETH, the static return of investment will decrease by 20% from the original basic return, namely 0.72% daily return
+
+
+
+With the investment of 1-20 ETH, the monthly profit is 15.12%-- 21.6%, and the profit is 21.6% with full inventory
+
+After seven days, 10% of the principal of the contract can be sold, ETH second to their own cold wallet;  
+
+After 14 days, 20% of the contract principal can be sold, ETH second to their own cold wallet;  
+
+After 21 days, 65% of the principal of the contract can be sold, ETH second to their own cold wallet;  
+
+Buy is equal to or greater than the previous contract into the next cycle, and sell 20.12% of the contract profit to your own cold wallet at the same time.  
+
+
+
+4. The growth of the number of users and the launch of different income and types of financial products for users to choose diversified financial management.
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var cars = $("#tgGoox").width();
+                var i = 0;
+                function start() {
+                    i--;
+                    if (i <= -cars) {
+                        i = 1 * cars;
+                        document.getElementById('tgGoox').style.right = -cars + 'px';
+                    } else {
+                        document.getElementById('tgGoox').style.left = i + 'px';
+                    }
+                    setTimeout(start, 50);
+                }
+                onload = function () { setTimeout(start, 100) };
+            </script>
+            <div class="ES_titlebox">
+                <div class="deption_title"><a href="HeYueRule.html"><span>more&nbsp;<img src="../Images/jt_pic.png" height="15px" /></span>Rule description</a></div>
+                <div class="deption_title1">
+                    <div class="title1">
+                       The concept of "smart contracts" predates the blockchain era, first appearing in 1996: a set of digitally defined agreements,
+
+Including agreements on which the parties to the contract may enforce these agreements.
+                    </div>
+                    <div>
+                        <div class="contract_left"><a href="HeYueAdd.html">JOIN</a></div>
+                        <div class="contract_right"><a href="HeYueRule.html">Contract rules</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="deption_title2">
+                    <ul>
+                        <li>
+                            <a href="HYstatus.html">
+                                <div class="pic">
+                                    <img src="../Images/index_pic1.png" height="90px" /></div>
+                                <div class="title">Current status</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Contract_sy.html">
+                                <div class="pic">
+                                    <img src="../Images/index_pic2.png" height="90px" /></div>
+                                <div class="title">revenue</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Nodereward.html">
+                                <div class="pic">
+                                    <img src="../Images/index_pic3.png" height="90px" /></div>
+                                <div class="title">Node reward</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <input type="hidden" id="hfaddress" />
+    
+    <script type="text/javascript">
+
+
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad3",
+                    "type": "address"
+                }
+            ],
+            "name": "cE",
+            "outputs": [
+                {
+                    "name": "_MsAdToN",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsFa",
+                    "type": "address"
+                },
+                {
+                    "name": "_MsBo",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }]
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var myContract = web3.eth.contract(abi).at(address);
+        $(document).ready(function () {
+            var lang = getCookie("EschLanguage");
+
+            if (lang == "ch") {
+                location.href = "/esch/index.html";
+            } else {
+                setCookie("EschLanguage", "en");
+            }
+            $(".pnav").each(function (i) {
+                var nowImg = "../Images/icon_" + i + ".png";
+                var CurrImg = "../Images/icon_" + i + "_" + i + ".png";
+                $(this).click(function () {
+                    $(".subnav").hide();
+                    $(".pnavImg").each(function (j) {
+                        $(this).attr("src", "../Images/icon_" + j + ".png");
+                    });
+
+                    if ($(this).attr("class").indexOf("pnavCurr") < 0) {
+                        $(".pnav").removeClass("pnavCurr");
+                        $(this).addClass("pnavCurr");
+                        $(this).find("img.pnavImg").attr("src", CurrImg);
+                        $(".subnav").eq(i).slideDown({ duration: 200, easing: 'linear' });
+                    }
+                    else {
+                        $(this).removeClass("pnavCurr");
+                        $(this).find("img.pnavImg").attr("src", nowImg);
+                        $(".subnav").eq(i).hide();
+                    }
+                });
+                var ahref = $(this).find("a").attr("href").toLowerCase();
+
+                if (ahref.indexOf('?') > 0)
+                    ahref = ahref.substring(0, ahref.indexOf('?'));
+                if (window.location.pathname.toLowerCase() == ahref) {
+                    $(this).addClass("pnavCurr");
+                    $(this).find("img.pnavImg").attr("src", CurrImg);
+                }
+            });
+            var locat = window.location.pathname.toLowerCase();
+
+        });
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+                if (web3.currentProvider.isMetaMask == true) {
+                    $("#env").html("网页MetaMask使用中...");
+                } else {
+                    $("#env").html("未使用网页MetaMask... ");
+                }
+            } else {
+                $("#env").html("未提供WEB3通道，请检查您的设置...");
+            }
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").html("请解锁！");
+                } else {
+                    $("#account").html(accounts);
+                    if (accounts != $("#hfaddress").val()) {
+                        $("#hfaddress").val(accounts[0]);
+
+                    }
+                    login( accounts[0]);
+                    myContract.cE(accounts[0], function (err, res) {
+                        if (!err) {
+                            $("#ZTAccount").html(res[1]);
+                            var ZTAccount = res[1];
+                            var number = parseInt(res[0]);
+                            var MsBo = parseInt(res[2]);
+                            var childcount = parseInt(res[3]);
+
+                            updateuser($("#hfaddress").val(), ZTAccount, number, MsBo, childcount);
+                        }
+                    })
+                }
+            });
+        })
+    </script>
+    <div class="navbox">
+        <div class="navli">
+            <div class="pnav">
+                <a class="nava" href="index.html">
+                    <img class="pnavImg" src="../Images/icon_0.png" height="30px" />
+                    <p class="txt">Home</p>
+                </a>
+            </div>
+            <div class="subnav">
+            </div>
+        </div>
+        <div class="navli">
+            <div class="pnav">
+                <a class="nava" href="BuyEsch.html">
+                    <img class="pnavImg" src="../Images/icon_1.png" height="30px" />
+                    <p class="txt">Buy ESCH</p>
+                </a>
+            </div>
+            <div class="subnav">
+            </div>
+            </div>
+    
+        </div>
+        </form>
+    
+</body>
+</html>
+

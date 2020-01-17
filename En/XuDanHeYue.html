@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Participate in the contract</title>
+     <link href="../Css/mobilemain.css" rel="stylesheet" />
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/web3.min.js"></script>
+
+            <script type="text/javascript">
+                function copyUrl2() {
+                    var Url2 = document.getElementById("account").innerText;
+                    var oInput = document.createElement('input');
+                    oInput.value = Url2;
+                    document.body.appendChild(oInput);
+                    oInput.select(); // 选择对象
+                    document.execCommand("Copy"); // 执行浏览器复制命令
+                    oInput.className = 'oInput';
+                    oInput.style.display = 'none';
+                    alert('ReplicatingSuccess');
+                }
+</script>
+</head>
+<body style="background-color:#f4f4f4;">
+     <div class="wrap">
+            <div class="main">
+                <div class="staus_name">
+                    <span><a href="index.html">
+                        <img src="../Images/jt_left.png" height="20px" /></a></span>Member renewal
+                </div>
+                
+                <div class="es_hybox1">
+                            <div class="ES_hytitle4">Address :
+                                 <span class="title" id="account" cols="20"></span>
+                                <input type="button" class="botton_title_name" onclick="copyUrl2()" value="ClickCopyCode" />
+                            </div>
+        
+         <div class="ES_hytitle3"><label>Quantity:：</label>
+         <select id="jeAccount" class="botton_acc1">
+                 <option value="2">2</option>
+                 <option value="3">3</option>
+                 <option value="4">4</option>
+                 <option value="5">5</option>
+                 <option value="6">6</option>
+                 <option value="7">7</option>
+                 <option value="8">8</option>
+                 <option value="9">9</option>
+                 <option value="10">10</option>
+             <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                 </select></div>
+       
+        <div class="ES_hytitle3"><label>Renewal address:</label>
+        <input type="text" id="xjrAccount" value="" class="botton_acc"></div>
+        <div class="ES_hytitle3"><label >Fuel unit price (GWei)</label>
+        <select id="gasPrice" class="botton_acc">
+            <option value="6">6</option>
+            <option value="11">11</option>
+            <option value="21">21</option>
+        </select>
+        </div>
+<div style="margin:auto; text-align:center; margin:15px 0px;">
+        <button onclick="joinon()" style="border:none; background:none;  border-radius:5px;width:80%; margin:auto;  color:#fff;text-align:center; background-color:#2886cf; height:35px; line-height:35px;">Send</button></div>
+<h2 id="info"></h2>
+                </div>
+        </div>
+    </div>
+<script>
+    window.addEventListener('load', function () {
+
+
+        web3.eth.getAccounts(function (err, accounts) {
+            if (accounts.length == 0) {
+                $("#account").html("Please unlock!");
+            } else {
+                $("#account").html(accounts[0]);
+            }
+
+        });
+    });
+</script>
+
+<script>
+    function joinon() {
+
+        var abi = [{
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_co2",
+                    "type": "address"
+                }
+            ],
+            "name": "conti1",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+        }];
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var AthenaToken = web3.eth.contract(abi).at(address);
+
+        var amount = $('#amount').val();
+        var gas = 2000000;
+        var gasPrice = $('#gasPrice').val();
+
+        var xjrx = $('#xjrAccount').val();
+        gasPrice = gasPrice * 1000000000;
+        var je = $('#jeAccount').val();
+        if (web3.isAddress(xjrx)) {
+            AthenaToken.conti1.sendTransaction(xjrx, { value: web3.toWei(je, 'ether'), gas: gas, gasPrice: gasPrice }
+            , function (err, res) {
+                var output = "";
+                if (!err) {
+                    $("#info").html("Successful delivery! Waiting for block confirmation...");
+                    $.ajax({
+                        type: "post",
+                        url: adminurl+"/ajax/ajax.ashx?action=addhy",
+                        data: { address: function () { return $('#xjrAccount').val(); } },
+                        success: function (res1) {
+
+                        }
+                    })
+                } else {
+                    $("#info").html("Please check the... ");
+                }
+
+            });
+        } else { $("#info").html("Not the correct address format!"); }
+
+    }</script>
+</body>
+</html>
+

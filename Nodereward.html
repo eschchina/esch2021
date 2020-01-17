@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>节点奖励</title>
+    <link href="Css/mobilemain.css" rel="stylesheet" />
+     <script src="JS/jquery.js"></script>
+    <script src="JS/web3.min.js"></script>
+    <script src="JS/public.js"></script>
+   
+    
+</head>
+<body style="background-color: #f4f4f4">
+    <form id="form1" runat="server">
+        <div class="wrap">
+            <div class="main">
+                <div class="ES_nodebg">
+                    <div class="none_name">
+                        <span><a href="index.html">
+                            <img src="Images/jt_left.png" height="20px" /></a></span>节点奖励
+                        <a href="SQAndLY.html" style="position: absolute;right: 0;color: #eee;">社区申请及留言</a>
+                    </div>
+                    <div class="none_etcbox">
+                        <div class="title1">
+                            <span id="yj"></span>
+                            <font>ETH</font></div>
+                        <div class="title2">我的节点业绩ETH</div>
+                    </div>
+                    <div class="none_etcboxleft" style="display:none;">
+                        <div class="title1">235653565.5<font>EHT</font></div>
+                        <div class="title2">社区节点收益</div>
+                    </div>
+                    <div class="none_etcboxright" style="display:none;">
+                        <div class="title1">235653565.5<font>ESCH</font></div>
+                        <div class="title2">社区节点收益</div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="my_share">
+                    <span id="childcount"></span>
+                    我的分享
+                </div>
+                <div >
+                    <table class="reward_list">
+                        <tr>
+                            <td class="table_name_eth">可领奖励</td>
+                            <td class="table_name_eth">已领取</td>
+                            <td class="table_name_eth">未领取</td>
+                        </tr>
+                        
+
+                          
+                        <tr>
+                            <td class="table_name_eth_title">
+                                <span id="klq"></span></td>
+                            <td class="table_name_eth_title"><span id="ylq"></span></td>
+                            <td class="table_name_eth_title"><span id="wlq"></span></td>
+                        </tr>
+                                 
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </form>
+    <input type="hidden" id="address" />
+    <script>
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad3",
+                    "type": "address"
+                }
+            ],
+            "name": "cE",
+            "outputs": [
+                {
+                    "name": "_MsAdToN",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsFa",
+                    "type": "address"
+                },
+                {
+                    "name": "_MsBo",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad1",
+                    "type": "address"
+                }
+            ],
+            "name": "cMber",
+            "outputs": [
+                {
+                    "name": "_MsBuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsBuActTime",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuAmo",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuReN",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta1",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta2",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }];
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var myContract = web3.eth.contract(abi).at(address);
+
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+                if (web3.currentProvider.isMetaMask == true) {
+                    $("#env").html("网页MetaMask使用中...");
+                } else {
+                    $("#env").html("未使用网页MetaMask... ");
+                }
+            } else {
+                $("#env").html("未提供WEB3通道，请检查您的设置...");
+            }
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").html("请解锁！");
+                } else {
+                    $("#address").val(accounts[0]);
+                    var address = accounts[0];
+                    login(accounts[0]);
+                    $.ajax({
+                        type: "get",
+                        url:adminurl+ "/ajax/Ajax.ashx?action=Nodereward&address=" + address,
+                        success: function (msg) {
+                            msg = eval("(" + msg + ")");
+                            $("#yj").html(msg.yj);
+                            $("#childcount").html(msg.childcount);
+                        }
+
+                    })
+                    myContract.cE(accounts[0], function (err, res) {
+                        if (!err) {
+                            $("#ZTAccount").html(res[1]);
+                            var ZTAccount = res[1];
+                            var number = res[0];
+                            var MsBo = res[2];
+                            var childcount = res[3];
+                            $("#childcount").html(res[3] + "");
+                            updateuser($("#address").val(), ZTAccount, number, MsBo, childcount);
+                        }
+                    })
+                    myContract.cMber(accounts[0], function (err, res) {
+                        if (!err) {
+                            $("#klq").html((parseFloat(web3.fromWei(res[3]))).toFixed(2) * 3);
+                            $("#wlq").html((parseFloat(web3.fromWei(res[4]))).toFixed(2));
+                            $("#ylq").html((parseFloat(web3.fromWei(res[3]))).toFixed(2) * 3 - (parseFloat(web3.fromWei(res[4]))).toFixed(2))
+
+                        }
+                    })
+                }
+
+            });
+        })
+    </script>
+    <script src="JS/FT_zh.js"></script>
+</body>
+</html>

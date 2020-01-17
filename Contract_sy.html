@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>合约收益</title>
+    <link href="Css/mobilemain.css" rel="stylesheet" />
+    <script src="JS/jquery.js"></script>
+    <script src="JS/web3.min.js"></script>
+    <script src="JS/public.js"></script>
+</head>
+<body style="background-color: #f4f4f4">
+    <form id="form1" runat="server">
+        <div class="wrap">
+            <div class="main">
+                <div class="Es_contractbox">
+                <div class="Es_contract_sy">
+                     <div class="none_name">
+                        <span><a href="index.html">
+                            <img src="Images/jt_left.png" height="20px" /></a></span>合约收益
+                    </div>
+                    <div class="contract_sy_etcbox">
+                        <div class="title2">累计收益</div>
+                        <div class="title1">
+                            <span id="LJSY"></span>
+                            <font>ETH</font></div>
+                    </div>
+                    <div class="none_etcboxleft">
+                        <div class="title2">可领取</div>
+                        <div class="title1">
+                            <span id="Kl"></span>
+                            <font>ETH</font></div>
+                    </div>
+                    <div class="none_etcboxright">
+                        <div class="title2">待领取</div>
+                        <div class="title1">
+                            <span id="dlq"></span>
+                            <font>ETH</font></div>
+                    </div>
+                    <div class="clear"></div>
+                     <div class="none_etcboxleft">
+                        <div class="title2">累计投资</div>
+                        <div class="title1">
+                             <span id="LJTZ"></span>
+                            <font>ETH</font></div>
+                    </div>
+                    <div class="none_etcboxright" >
+                        <div class="title2">累计回本</div>
+                        <div class="title1">
+                            <span id="ljhb"></span>
+                            <font>ETH</font></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    <div class="sy_list" style="display:none;">收益记录</div>
+                    </div>
+                 
+                <div class="contract_sy_list">
+                    
+                     
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad1",
+                    "type": "address"
+                }
+            ],
+            "name": "cMber",
+            "outputs": [
+                {
+                    "name": "_MsBuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsBuActTime",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuAmo",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuReN",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta1",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta2",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ywbh",
+                    "type": "uint32"
+                }
+            ],
+            "name": "cBun",
+            "outputs": [
+                {
+                    "name": "_ywbh3",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_time",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_now",
+                    "type": "uint256"
+                },
+                {
+                    "name": "sjc",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_ywzt",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_BuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_bizNum",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }];
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var myContract = web3.eth.contract(abi).at(address);
+
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+                if (web3.currentProvider.isMetaMask == true) {
+                    $("#env").html("网页MetaMask使用中...");
+                } else {
+                    $("#env").html("未使用网页MetaMask... ");
+                }
+            } else {
+                $("#env").html("未提供WEB3通道，请检查您的设置...");
+            }
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").html("请解锁！");
+                } else {
+                    var address = accounts[0];
+                    $("#address").val(accounts[0]);
+                    login(accounts[0]);
+                    $.ajax({
+                        type: "get",
+                        url: adminurl + "/ajax/Ajax.ashx?action=Contract_sy&address=" + address,
+
+                        success: function (msg) {
+                            var msg = eval("(" + msg + ")");
+                            $("#LJSY").html(msg.yj);
+                            $("#Kl").html(msg.dl);
+                            $("#dlq").html(msg.sy);
+                            $("#LJTZ").html(msg.LJTZ);
+                            $("#ljhb").html(msg.ljhb);
+                        }
+                    })
+                    //myContract.cE(accounts, function (err, res) {
+                    //    if (!err) {
+                    //        $("#ZTAccount").html(res[1]);
+                    //        var ZTAccount = res[1];
+                    //        var number = res[0];
+                    //        var MsBo = res[2];
+                    //        var childcount = res[3];
+                    //        $("#childcount").html(res[3] + "");
+                    //        updateuser($("#address").val(), ZTAccount, number, MsBo, childcount);
+                    //    }
+                    //})
+                    getstatus(1);
+                }
+
+            });
+        })
+        function getstatus(obj) {
+            //var ids = $("#hfids").val().split(',');
+            //if (ids.length > obj) {
+            //    var idd = ids[obj].split('_')
+            //    if (idd.length == 2) {
+            //        var id =parseInt( idd[0]);
+            //        var status = idd[1];
+            //        myContract.cBun(id, function (err, res) {
+            //            console.log(id);
+            //            if (!err) {
+            //                var newstatus = res[4] + "";
+            //                if (newstatus != status) {
+            //                    $.ajax({
+            //                        type: "post",
+            //                        url: "/ajax/ajax.ashx?action=updatestatus",
+            //                        data: {
+            //                            id: id,
+            //                            status: newstatus
+            //                        },
+            //                        success: function (da) {
+            //                            getstatus(obj+1);
+            //                        }
+            //                    })
+            //                } else {
+            //                    getstatus(obj+1);
+            //                }
+            //            }
+            //        })
+            //    }
+            //}
+            myContract.cBun(obj, function (err, res) {
+                console.log(obj);
+                if (!err) {
+                    if (res[0] != 0) {
+                        var ywbh = res[0] + "";
+                        var ywzt = res[4] + "";
+                        $.ajax({
+                            type: "post",
+                            url: adminurl + "/ajax/ajax.ashx?action=updatestatus",
+                            data: {
+                                address: function () { return $("#account").val(); },
+                                ywbh: ywbh,
+                                ywzt: ywzt
+                            },
+                            success: function (da) {
+                                if (da == "adderr") {
+                                    //alert("Login address error");
+                                } else {
+                                    getstatus(obj + 1);
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+
+
+        }
+    </script>
+    <script src="JS/FT_zh.js"></script>
+</body>
+</html>
+

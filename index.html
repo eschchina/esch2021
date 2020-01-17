@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>ESCH首页</title>
+    
+    <link href="Css/mobilemain.css" rel="stylesheet" />
+    <script src="JS/jquery.js"></script>
+    <script src="JS/web3.min.js"></script>
+    <script src="JS/public.js"></script>
+    
+</head>
+<body style="background-color: #5777ce;">
+    <form runat="server">
+    <div class="wrap">
+        <div class="main">
+            <div class="ES_logo">
+                <span onclick="changelan()">
+                    <img src="Images/en.png" /></span><img src="Images/logo.png" />&nbsp; <i>合约联盟</i>
+                <div class="clear"></div>
+            </div>
+            <div><a href="#">
+                <img src="Images/banner.jpg" width="100%" /></a></div>
+            <div class="jmtopnews">
+                <div id="tgBigox">
+                    <div id="tgGoox">
+                                                   ESCH28天合约
+
+参与规则 
+1、参与金额2-20个ETH，前期开放2-10个ETH.根据ETH的价格合约自动检测费率开放参与额。
+月收益18.9%--27%，满仓挂单收益27%； 
+满7天后可卖出合约本金的10%，ETH秒到自己的冷钱包； 
+满14天后可卖出合约本金的20%，ETH秒到自己的冷钱包； 
+满21天后可卖出合约本金的65%，ETH秒到自己的冷钱包； 
+满28天卖出利润23.9%买入等于、大于上一次合约进入下一个周期，同时卖出合约23.9%秒到自己的冷钱包。 
+备注： 
+①24小时限制参与一次投资，满24小时收益0.9%，21天收益截止。 
+②进场、出场均自动扣除1% ESCH token代币作为手续费（例如投资10个ETH收取100个 token）。 token代币向推荐人购买或平台购买；平台购买ESCH token，1ETH兑换1000 ESCH token，起步0.1个ETH兑换。购买ESCH的ETH进入A合约钱包。挂单手续费根据ESCH的价值核算。 
+
+2、当合约矿池总量从高到低递减的时候，总量到5000ETH会在发放部分等价值的ESCH。用户将获得市场价值低于ESCH5-10%价值的数量。
+
+3、当以太坊总量达到100万ETH流水，投资静态收益在原基础收益上递减20%，即日收益0.72% 
+
+    起投1-20个ETH，月收益15.12%---21.6%，满仓挂单收益21.6% 
+满7天后可卖出合约本金的10%，ETH秒到自己的冷钱包； 
+满14天后可卖出合约本金的20%，ETH秒到自己的冷钱包； 
+满21天后可卖出合约本金的65%，ETH秒到自己的冷钱包； 
+满28天卖出利润20.12%买入等于、大于上一次合约进入下一个周期，同时卖出合约利润的20.12%秒到自己的冷钱包。 
+
+4、用户数量的增长及平台会推出不同收益及类型的理财产品供用户选择多元化理财。
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                var cars = $("#tgGoox").width();
+                var i = 0;
+                function start() {
+                    i--;
+                    if (i <= -cars) {
+                        i = 1 * cars;
+                        document.getElementById('tgGoox').style.right = -cars + 'px';
+                    } else {
+                        document.getElementById('tgGoox').style.left = i + 'px';
+                    }
+                    setTimeout(start, 50);
+                }
+                onload = function () { setTimeout(start, 100) };
+            </script>
+            <div class="ES_titlebox">
+                <div class="deption_title"><a href="HeYueRule.html"><span>more&nbsp;<img src="Images/jt_pic.png" height="15px" /></span>规则说明</a></div>
+                <div class="deption_title1">
+                    <div class="title1">
+                        "智能合约”的概念早于区块链时代，概念首次出现于1996年：一套以数字形式定义的约定，
+                       包括合约参与方可以在上面执行这些约定的协议。
+                    </div>
+                    <div>
+                        <div class="contract_left"><a href="HeYueAdd.html">参与合约</a></div>
+                        <div class="contract_right"><a href="HeYueRule.html">合约规则</a></div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <div class="deption_title2">
+                    <ul>
+                        <li>
+                            <a href="HYstatus.html">
+                                <div class="pic">
+                                    <img src="Images/index_pic1.png" height="90px" /></div>
+                                <div class="title">当前合约状态</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Contract_sy.html">
+                                <div class="pic">
+                                    <img src="Images/index_pic2.png" height="90px" /></div>
+                                <div class="title">合约收益</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="Nodereward.html">
+                                <div class="pic">
+                                    <img src="Images/index_pic3.png" height="90px" /></div>
+                                <div class="title">节点奖励</div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <input type="hidden" id="hfaddress" />
+    <input type="hidden" id="hfqsadd" />
+        
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            var lang = getCookie("EschLanguage");
+
+            if (lang == "en") {
+                location.href = "/esch/En/index.html";
+            } else {
+                setCookie("EschLanguage", "ch");
+            }
+            $(".pnav").each(function (i) {
+                var nowImg = "Images/icon_" + i + ".png";
+                var CurrImg = "Images/icon_" + i + "_" + i + ".png";
+                $(this).click(function () {
+                    $(".subnav").hide();
+                    $(".pnavImg").each(function (j) {
+                        $(this).attr("src", "Images/icon_" + j + ".png");
+                    });
+
+                    if ($(this).attr("class").indexOf("pnavCurr") < 0) {
+                        $(".pnav").removeClass("pnavCurr");
+                        $(this).addClass("pnavCurr");
+                        $(this).find("img.pnavImg").attr("src", CurrImg);
+                        $(".subnav").eq(i).slideDown({ duration: 200, easing: 'linear' });
+                    }
+                    else {
+                        $(this).removeClass("pnavCurr");
+                        $(this).find("img.pnavImg").attr("src", nowImg);
+                        $(".subnav").eq(i).hide();
+                    }
+                });
+                var ahref = $(this).find("a").attr("href").toLowerCase();
+
+                if (ahref.indexOf('?') > 0)
+                    ahref = ahref.substring(0, ahref.indexOf('?'));
+                if (window.location.pathname.toLowerCase() == ahref) {
+                    $(this).addClass("pnavCurr");
+                    $(this).find("img.pnavImg").attr("src", CurrImg);
+                }
+            });
+            var locat = window.location.pathname.toLowerCase();
+
+        });
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad3",
+                    "type": "address"
+                }
+            ],
+            "name": "cE",
+            "outputs": [
+                {
+                    "name": "_MsAdToN",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsFa",
+                    "type": "address"
+                },
+                {
+                    "name": "_MsBo",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ywbh",
+                    "type": "uint32"
+                }
+            ],
+            "name": "cBun",
+            "outputs": [
+                {
+                    "name": "_ywbh3",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_time",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_now",
+                    "type": "uint256"
+                },
+                {
+                    "name": "sjc",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_ywzt",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_BuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_bizNum",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }]
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var myContract = web3.eth.contract(abi).at(address);
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+                if (web3.currentProvider.isMetaMask == true) {
+                    $("#env").html("网页MetaMask使用中...");
+                } else {
+                    $("#env").html("未使用网页MetaMask... ");
+                }
+            } else {
+                $("#env").html("未提供WEB3通道，请检查您的设置...");
+            }
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").html("请解锁！");
+                } else {
+                    $("#account").html(accounts);
+                    if (accounts != $("#hfaddress").val()) {
+                        $("#hfaddress").val(accounts[0]);
+
+                    }
+                    //if ($("#hfqsadd").val() != "") {
+                    //    setcookie("UserAddressESCH", $("#hfqsadd").val());
+                    //} else {
+                    login(accounts[0]);
+                    //}
+
+                    myContract.cE(accounts[0], function (err, res) {
+                        if (!err) {
+
+                            var ZTAccount = res[1];
+                            var number = parseInt(res[0]);
+                            var MsBo = parseInt(res[2]);
+                            var childcount = parseInt(res[3]);
+
+                            updateuser($("#hfaddress").val(), ZTAccount, number, MsBo, childcount);
+                            getstatus(1);
+                        }
+                    })
+                }
+            });
+        })
+        function getstatus(obj) {
+            //var ids = $("#hfids").val().split(',');
+            //if (ids.length > obj) {
+            //    var idd = ids[obj].split('_')
+            //    if (idd.length == 2) {
+            //        var id =parseInt( idd[0]);
+            //        var status = idd[1];
+            //        myContract.cBun(id, function (err, res) {
+            //            console.log(id);
+            //            if (!err) {
+            //                var newstatus = res[4] + "";
+            //                if (newstatus != status) {
+            //                    $.ajax({
+            //                        type: "post",
+            //                        url: "/ajax/ajax.ashx?action=updatestatus",
+            //                        data: {
+            //                            id: id,
+            //                            status: newstatus
+            //                        },
+            //                        success: function (da) {
+            //                            getstatus(obj+1);
+            //                        }
+            //                    })
+            //                } else {
+            //                    getstatus(obj+1);
+            //                }
+            //            }
+            //        })
+            //    }
+            //}
+            myContract.cBun(obj, function (err, res) {
+                console.log(obj);
+                if (!err) {
+                    if (res[0] != 0) {
+                        var ywbh = res[0] + "";
+                        var ywzt = res[4] + "";
+                        $.ajax({
+                            type: "post",
+                            url: adminurl+"/ajax/ajax.ashx?action=updatestatus",
+                            data: {
+                                address: function () { return $("#account").val(); },
+                                ywbh: ywbh,
+                                ywzt: ywzt
+                            },
+                            success: function (da) {
+                                if (da == "adderr") {
+                                    //alert("Login address error");
+                                } else {
+                                    getstatus(obj + 1);
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+
+
+        }
+    </script>
+    <div class="navbox">
+        <div class="navli">
+            <div class="pnav">
+                <a class="nava" href="index.html">
+                    <img class="pnavImg" src="Images/icon_0.png" height="30px" />
+                    <p class="txt">首页</p>
+                </a>
+            </div>
+            <div class="subnav">
+            </div>
+        </div>
+        <div class="navli">
+            <div class="pnav">
+                <a class="nava" href="BuyEsch.html">
+                    <img class="pnavImg" src="Images/icon_1.png" height="30px" />
+                    <p class="txt">购买ESCH</p>
+                </a>
+            </div>
+            <div class="subnav">
+            </div>
+            </div>
+    
+        </div>
+        </form>
+    <script src="JS/FT_zh.js"></script>
+</body>
+</html>
+

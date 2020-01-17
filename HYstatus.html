@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>合约状态</title>
+    <link href="Css/mobilemain.css" rel="stylesheet" />
+    <script src="JS/jquery.js"></script>
+    <script src="JS/web3.min.js"></script>
+    <script src="JS/public.js"></script>
+    <script>
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ywbh",
+                    "type": "uint32"
+                }
+            ],
+            "name": "cBun",
+            "outputs": [
+                {
+                    "name": "_ywbh3",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_time",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_now",
+                    "type": "uint256"
+                },
+                {
+                    "name": "sjc",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_ywzt",
+                    "type": "uint8"
+                },
+                {
+                    "name": "_BuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_bizNum",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }, {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_ywbh",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_ad4",
+                    "type": "address"
+                }
+            ],
+            "name": "lq",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": true,
+            "stateMutability": "payable",
+            "type": "function"
+        }, {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad1",
+                    "type": "address"
+                }
+            ],
+            "name": "cMber",
+            "outputs": [
+                {
+                    "name": "_MsBuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsBuActTime",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuAmo",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuReN",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta1",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta2",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }];
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        //var address = "0x29274352b9b9819e2d6a51710c381611015b73a3";
+        var myContract = web3.eth.contract(abi).at(address);
+        window.addEventListener('load', function () {
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").val("");
+
+                } else {
+                    $("#account").val(accounts[0]);
+                    login(accounts[0]);
+                    var address = accounts[0];
+                    jQuery.support.cors = true;
+                    $.ajax({
+                        type: "get",
+                        url: adminurl + "/ajax/ajax.ashx?action=HYstatus&address=" + address,
+                        success: function (msg) {
+                            msg = eval("(" + msg + ")");
+                            $("#dlq").html(msg.dlq);
+                            $("#dx").html(msg.dx);
+                            if (msg.datacount > 0) {
+                                var html = "";
+                                for (var i = 0; i < msg.data.length; i++) {
+                                    html += "";
+                                    html += "<div class=\"contract_pic\" onclick=\"picclick(" + msg.data[i].UIndex + "," + msg.data[i].days + "," + msg.data[i].Money + "," + msg.data[i].Status + ")\"  id=\"box1-right\">";
+                                    html += "<div class=\"new_pic\"><img src=\"Images/new_pro.png\" height=\"35px\"/></div>";
+                                    html += "<div class=\"title1\">编号：" + msg.data[i].UIndex + "</div>";
+                                    html += "<div class=\"titleleft\">参与时间</div>";
+                                    html += "<div class=\"titleright\">" + msg.data[i].CreateTime + "</div>";
+                                    html += "<div class=\"titleleft\">当前参与额度</div>";
+                                    html += "<div class=\"titleright\">" + msg.data[i].Money + "</div>";
+                                    html += "<div class=\"titleleft\">间隔时间</div>";
+                                    html += "<div class=\"titleright\">";
+                                    html += msg.data[i].jgdays + "</div>";
+                                    html += "<div class=\"titleleft\">可领金额</div>";
+                                    html += "<div class=\"titleright\">";
+                                    html += msg.data[i].kl + "</div>";
+                                    html += "<div class=\"titleleft\">合约状态</div>";
+                                    html += "<div class=\"titleright\">";
+                                    for (var a = 0; a < 4; a++) {
+                                        if (msg.data[i].st > a) {
+                                            html += "<img src=\"Images/starsy.png\" />";
+                                        } else {
+                                            html += "<img src=\"Images/starky.png\" />";
+                                        }
+                                    }
+
+                                    html += "</div>";
+                                    html += "<div class=\"clear\"></div>";
+                                    html += "</div>";
+                                }
+                                $(".contract_box").html(html);
+                            }
+                        }
+                    })
+                }
+            })
+
+
+            getstatus(1);
+
+        })
+        function picclick(id, day, price, status) {
+            //var id = $(this).attr("data-id");
+            //var day = $(this).attr("data-day");
+            //var price = $(this).attr("data-price");
+            //var status = $(this).attr("data-status");
+            var klprice = 0;
+            if (parseInt(day) >= 28) {
+                switch (parseInt(status)) {
+                    case 0:
+                        klprice = parseFloat(price) * 0.95;
+                        break;
+                    case 1:
+                        klprice = parseFloat(price) * 0.85;
+                        break;
+                    case 2:
+                        klprice = parseFloat(price) * 0.65;
+                        break;
+                    case 3:
+                        klprice = parseFloat(price) * 0.05 + 21 * parseFloat(price) * 0.009;
+                        break;
+                    case 4:
+                        klprice = 0;
+                        break;
+                }
+            }
+            else
+                if (parseInt(day) >= 21) {
+                    switch (parseInt(status)) {
+                        case 0:
+                            klprice = parseFloat(price) * 0.95;
+                            break;
+                        case 1:
+                            klprice = parseFloat(price) * 0.85;
+                            break;
+                        case 2:
+                            klprice = parseFloat(price) * 0.65;
+                            break;
+                        case 3:
+                            klprice = 0;
+                            break;
+                    }
+
+                } else if (parseInt(day) >= 14) {
+                    switch (parseInt(status)) {
+                        case 0:
+                            klprice = parseFloat(price) * 0.3;
+                            break;
+                        case 1:
+                            klprice = parseFloat(price) * 0.2;
+                            break;
+                        case 2:
+                            klprice = parseFloat(price) * 0;
+                            break;
+
+                    }
+
+                } else if (parseInt(day) >= 7) {
+                    switch (parseInt(status)) {
+                        case 0:
+                            klprice = parseFloat(price) * 0.1;
+                            break;
+                        case 1:
+                            klprice = parseFloat(price) * 0;
+                            break;
+
+
+                    }
+
+                }
+
+            $("#days").html(day);
+            $("#price").html(klprice.toFixed(3));
+            $("#hfddid").val(id);
+            if (status == 3) {
+                $("#lq").hide();
+                $("#xd").show();
+
+
+            } else if (status < 3) {
+
+                $("#lq").show();
+                $("#xd").hide();
+
+            }
+
+            $("#youkuplayer").css("display", "block");
+            event.stopPropagation();
+        }
+        function getstatus(obj) {
+            //var ids = $("#hfids").val().split(',');
+            //if (ids.length > obj) {
+            //    var idd = ids[obj].split('_')
+            //    if (idd.length == 2) {
+            //        var id =parseInt( idd[0]);
+            //        var status = idd[1];
+            //        myContract.cBun(id, function (err, res) {
+            //            console.log(id);
+            //            if (!err) {
+            //                var newstatus = res[4] + "";
+            //                if (newstatus != status) {
+            //                    $.ajax({
+            //                        type: "post",
+            //                        url: "/ajax/ajax.ashx?action=updatestatus",
+            //                        data: {
+            //                            id: id,
+            //                            status: newstatus
+            //                        },
+            //                        success: function (da) {
+            //                            getstatus(obj+1);
+            //                        }
+            //                    })
+            //                } else {
+            //                    getstatus(obj+1);
+            //                }
+            //            }
+            //        })
+            //    }
+            //}
+            myContract.cBun(obj, function (err, res) {
+                console.log(obj);
+                if (!err) {
+                    if (res[0] != 0) {
+                        var ywbh = res[0] + "";
+                        var ywzt = res[4] + "";
+                        $.ajax({
+                            type: "post",
+                            url: adminurl+"/ajax/ajax.ashx?action=updatestatus",
+                            data: {
+                                //address: function () { return $("#account").val(); },
+                                ywbh: ywbh,
+                                ywzt: ywzt
+                            },
+                            success: function (da) {
+                                if (da == "adderr") {
+                                    alert("Login address error");
+                                } else {
+                                    getstatus(obj + 1);
+                                }
+                            }
+                        })
+                    }
+                }
+            })
+
+
+        }
+    </script>
+    <script>
+        $(function () {
+
+            $(document).click(function () {
+                $("#youkuplayer").css("display", "none");
+            })
+            $(".contract_pic").click(function () {
+                return false;
+            })
+            $("#lq").click(function () {
+                var id = $("#hfddid").val();
+                var accounts = $("#account").val();
+                if (id != "" && accounts != "") {
+                    myContract.lq(id, accounts, function (err, res) {
+                        if (!err) {
+                            if (res) {
+                                alert("发送成功，请等待区块确认");
+                            }
+                        }
+                    })
+
+                }
+                event.stopPropagation();
+            })
+            $("#xd").click(function () {
+                var id = $("#hfddid").val();
+                location.href = "JiChengHY.html?id=" + id;
+                event.stopPropagation();
+            })
+        })
+
+
+
+
+
+
+
+
+        //为了防止点击 box1-right 也关闭box1-right 此处要防止冒泡
+
+    </script>
+    <style>
+    .lq{
+        float:right;
+width:40%;
+    margin:0 10px;
+    }
+    .xd{
+        float:left;
+width:40%;
+    margin:0 10px;
+    }
+    </style>
+</head>
+<body style="background-color: #f2f2f2;">
+    <form id="form1" runat="server">
+        <div class="wrap">
+            <div class="main">
+                <div class="staus_name">
+                    <span><a href="index.html">
+                        <img src="Images/jt_left.png" height="20px" /></a></span>当前合约状态
+                </div>
+                <div class="ES_menu">
+                    <ul>
+                        <li><a href="HYstatus.html">待完成</a></li>
+                        <li  class="db_hover"><a href="YWCHeYue.html">已完成</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="Pending">
+                    <ul>
+                        <li><font style="color: #222; font-size: 14px;">未完成合约</font></li>
+                        <li><font style="color: #959595; font-size: 14px;">待领</font>&nbsp; <font style="color: #f08519; font-size: 15px;"><span id="dlq"></span></font></li>
+                        <li><font style="color: #959595; font-size: 14px;">待续</font>&nbsp; <font style="color: #f08519; font-size: 15px;"><span id="dx"></span></font></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div class="contract_box">
+
+                   
+                   
+                    <script type="text/javascript" src="JS/startScore.js"></script>
+                    <script>
+                        scoreFun($("#startone"))
+                        scoreFun($("#starttwo"), {
+                            fen_d: 22,//每一个a的宽度
+                            ScoreGrade: 4//a的个数 10或者
+                        })
+                    </script>
+                    <script>
+                        //显示分数
+                        $(".show_number li p").each(function (index, element) {
+                            var num = $(this).attr("tip");
+                            var www = num * 2 * 16;//
+                            $(this).css("width", www);
+                            $(this).parent(".atar_Show").siblings("span").text(num + "分");
+                        });
+                    </script>
+                </div>
+            </div>
+            <div id="youkuplayer" style="display:none;">
+                <div class="ES_yourbg"></div>
+                <div class="ES_yourbox">
+              <div class="status_title">合约状态</div>
+                <div class="status_titleleft">
+                    <div class="title1" id="days"></div>
+                    <div class="title2">天数</div>
+                </div>
+                     <div class="status_titleright">
+                    <div class="title1" id="price"></div>
+                    <div class="title2">可领金额</div>
+                </div>
+                    <div class="clear"></div>
+                    <div class="qr_colse"id="xd">续单</div>
+                    <div class="qr_colse"id="lq">领取</div>
+                </div>
+            </div>
+        </div>
+        
+        <input type="hidden" id="hfddid" />
+        <input type="hidden" id="account" />
+    </form>
+    <script src="JS/FT_zh.js"></script>
+</body>
+</html>

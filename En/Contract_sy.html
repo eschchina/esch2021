@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Contract revenue</title>
+    <link href="../Css/mobilemain.css" rel="stylesheet" />
+    <script src="../JS/jquery.js"></script>
+    <script src="../JS/web3.min.js"></script>
+    <script src="../JS/public.js"></script>
+</head>
+<body style="background-color: #f4f4f4">
+    <form id="form1" runat="server">
+        <div class="wrap">
+            <div class="main">
+                <div class="Es_contractbox">
+                <div class="Es_contract_sy">
+                     <div class="none_name">
+                        <span><a href="index.html">
+                            <img src="../Images/jt_left.png" height="20px" /></a></span>Contract revenue
+                    </div>
+                    <div class="contract_sy_etcbox">
+                        <div class="title2">Cumulative income</div>
+                        <div class="title1">
+                            <span id="LJSY"></span><font>EHT</font></div>
+                    </div>
+                    <div class="none_etcboxleft">
+                        <div class="title2">Available</div>
+                        <div class="title1">
+                             <span id="Kl"></span><font>EHT</font></div>
+                    </div>
+                    <div class="none_etcboxright">
+                        <div class="title2">Pending</div>
+                        <div class="title1">
+                            <span id="dlq"></span><font>ESCH</font></div>
+                    </div>
+                    <div class="clear"></div>
+                     <div class="none_etcboxleft">
+                        <div class="title2">Cumulative investment</div>
+                        <div class="title1">
+                            <span id="LJTZ"></span><font>EHT</font></div>
+                    </div>
+                    <div class="none_etcboxright" >
+                        <div class="title2">Cumulative return</div>
+                        <div class="title1"><span id="ljhb"></span><font>ESCH</font></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                    <div class="sy_list"style="display:none;">收益记录</div>
+                    </div>
+
+                <div class="contract_sy_list" style="display:none;">
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        var abi = [{
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "_ad1",
+                    "type": "address"
+                }
+            ],
+            "name": "cMber",
+            "outputs": [
+                {
+                    "name": "_MsBuTotal",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsSon",
+                    "type": "uint32"
+                },
+                {
+                    "name": "_MsBuActTime",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuAmo",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuReN",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta1",
+                    "type": "uint256"
+                },
+                {
+                    "name": "_MsBuSta2",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        }];
+        var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+        var myContract = web3.eth.contract(abi).at(address);
+
+        window.addEventListener('load', function () {
+            if (typeof web3 !== 'undefined') {
+                web3 = new Web3(web3.currentProvider);
+                if (web3.currentProvider.isMetaMask == true) {
+                    $("#env").html("Web page MetaMask in use...");
+                } else {
+                    $("#env").html("Not using page MetaMask... ");
+                }
+            } else {
+                $("#env").html("The web page MetaMask is in use...");
+            }
+            web3.eth.getAccounts(function (err, accounts) {
+                if (accounts.length == 0) {
+                    $("#account").html("Please unlock!");
+                } else {
+                    $("#address").val(accounts[0]);
+                    login(accounts[0]);
+                    $.ajax({
+                        type: "get",
+                        url: adminurl+"/ajax/Ajax.ashx?action=Contract_sy&address=" + address,
+
+                        success: function (msg) {
+                            var msg = eval("(" + msg + ")");
+                            $("#LJSY").html(msg.yj);
+                            $("#Kl").html(msg.dl);
+                            $("#dlq").html(msg.sy);
+                            $("#LJTZ").html(msg.LJTZ);
+                            $("#ljhb").html(msg.ljhb);
+                        }
+                    })
+                    //myContract.cE(accounts, function (err, res) {
+                    //    if (!err) {
+                    //        $("#ZTAccount").html(res[1]);
+                    //        var ZTAccount = res[1];
+                    //        var number = res[0];
+                    //        var MsBo = res[2];
+                    //        var childcount = res[3];
+                    //        $("#childcount").html(res[3] + "");
+                    //        updateuser($("#address").val(), ZTAccount, number, MsBo, childcount);
+                    //    }
+                    //})
+                }
+
+            });
+        })
+    </script>
+    
+</body>
+</html>

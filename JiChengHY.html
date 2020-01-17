@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>参与合约</title>
+     <link href="Css/mobilemain.css" rel="stylesheet" />
+    <script src="JS/jquery.js"></script>
+    <script src="JS/public.js"></script>
+    <script src="JS/web3.min.js"></script>
+            <script type="text/javascript">
+                function copyUrl2() {
+                    var Url2 = document.getElementById("account").innerText;
+                    var oInput = document.createElement('input');
+                    oInput.value = Url2;
+                    document.body.appendChild(oInput);
+                    oInput.select(); // 选择对象
+                    document.execCommand("Copy"); // 执行浏览器复制命令
+                    oInput.className = 'oInput';
+                    oInput.style.display = 'none';
+                    alert('复制成功');
+                }
+</script>
+</head>
+<body style="background-color:#f4f4f4;">
+    <form id="form1" runat="server">
+     <div class="wrap">
+            <div class="main">
+                <div class="staus_name">
+                    <span><a href="index.html">
+                        <img src="Images/jt_left.png" height="20px" /></a></span>会员续单
+                </div>
+                
+                <div class="es_hybox1">
+                            <div class="ES_hytitle4">您的收款地址是：
+                                <span class="title" id="account" cols="20"></span>
+                                <input type="button" class="botton_title_name" onclick="copyUrl2()" value="点击复制代码" />
+                            </div>
+        
+         <div class="ES_hytitle3"><label>参与金额：</label>
+        <input type="text" id="jeAccount" value=""  class="botton_acc"></div>
+        
+        <div class="ES_hytitle3"><label>续单地址：</label>
+        <input type="text" id="xjrAccount" value="" readonly class="botton_acc"></div>
+        <div class="ES_hytitle3"><label >燃料单价(GWei)</label>
+        <select id="gasPrice" class="botton_acc1">
+            <option value="6">6</option>
+            <option value="11">11</option>
+            <option value="21">21</option>
+        </select>
+        </div>
+<div style="margin:auto; text-align:center; margin:15px 0px;">
+        <button onclick="joinon()" style="border:none; background:none;  border-radius:5px;width:80%; margin:auto;  color:#fff;text-align:center; background-color:#2886cf; height:35px; line-height:35px;">发送</button></div>
+<h2 id="info"></h2>
+                </div>
+        </div>
+         <input type="hidden" id="hfid" />
+         
+    </div>
+<script>
+    window.addEventListener('load', function () {
+
+
+        web3.eth.getAccounts(function (err, accounts) {
+            if (accounts.length == 0) {
+                $("#account").html("请解锁！");
+            } else {
+                $("#account").html(accounts[0]);
+                var address = accounts[0];
+                login(accounts[0]);
+
+                var id = Request("id");
+
+                $.ajax({
+                    type: "get",
+                    url: adminurl + "/ajax/Ajax.ashx?action=JiChengHY&id=" + id + "&address=" + address,
+                    success: function (msg) {
+                        var msg = eval("(" + msg + ")");
+                        $("#jeAccount").val(msg.price);
+                        $("#xjrAccount").val(msg.address);
+                        $("#hfid").val(msg.id);
+                    }
+                })
+            }
+
+        });
+    });
+</script>
+
+<script>
+    var abi = [{
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_ywbh3",
+                "type": "uint32"
+            },
+            {
+                "name": "_co3",
+                "type": "address"
+            }
+        ],
+        "name": "conti2",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    }, {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_ad1",
+                "type": "address"
+            }
+        ],
+        "name": "cMber",
+        "outputs": [
+            {
+                "name": "_MsBuTotal",
+                "type": "uint32"
+            },
+            {
+                "name": "_MsSon",
+                "type": "uint32"
+            },
+            {
+                "name": "_MsBuActTime",
+                "type": "uint256"
+            },
+            {
+                "name": "_MsBuAmo",
+                "type": "uint256"
+            },
+            {
+                "name": "_MsBuReN",
+                "type": "uint256"
+            },
+            {
+                "name": "_MsBuSta1",
+                "type": "uint256"
+            },
+            {
+                "name": "_MsBuSta2",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }];
+    var address = "0x34848f3c3934733d3ebc6f82489346592566c777";
+    var AthenaToken = web3.eth.contract(abi).at(address);
+
+    function joinon() {
+
+
+
+        var amount = $('#amount').val();
+        var gas = 2000000;
+        var gasPrice = $('#gasPrice').val();
+
+        var xjrx = $('#xjrAccount').val();
+        gasPrice = gasPrice * 1000000000;
+        var je = $('#jeAccount').val();
+        var id = $("#hfid").val();
+        if (id != "") {
+            if (web3.isAddress(xjrx)) {
+                AthenaToken.conti2.sendTransaction(id, xjrx, { value: web3.toWei(je, 'ether'), gas: gas, gasPrice: gasPrice }
+                , function (err, res) {
+                    var output = "";
+                    if (!err) {
+                        $("#info").html("发送成功！等待区块确认... ");
+                        $.ajax({
+                            type: "post",
+                            url: adminurl + "/ajax/ajax.ashx?action=addhy",
+                            data: { address: function () { return $('#xjrAccount').val(); } },
+                            success: function (res1) {
+
+                            }
+                        })
+                    } else {
+                        $("#info").html("请检查... ");
+                    }
+
+                });
+            } else { $("#info").html("不是正确的地址格式！"); }
+        }
+
+    }</script>
+    <script src="JS/FT_zh.js"></script>
+        </form>
+</body>
+</html>

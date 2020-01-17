@@ -1,0 +1,9 @@
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml3\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml4\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml4\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+H:\projects\2020_ESCH\2020_ESCH静态\EschHtml4\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

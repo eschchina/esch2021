@@ -1,0 +1,208 @@
+﻿html {
+	height:100%;
+}
+article, section, h1, h2, h3, h4, h5, h6, hgroup, p, a, div, ul, li, dl, dd, dt, em, small, span, footer, canvas, figure, figcaption, input {
+	padding: 0;
+	margin: 0;
+}
+img{ border-style:none; vertical-align:middle;}
+a {
+	color: #333;
+	cursor: pointer;
+	text-decoration: none
+}
+ul, li {
+	list-style-type: none
+}
+.clear {
+	clear: both
+}
+body {
+	background-color: #fff;
+	font-family: "Microsoft Yahei";
+	margin: 0;
+	overflow-x: hidden;
+	padding: 0;
+	color: #666
+}
+.wrap{ max-width:640px; margin:auto;}
+.main{ padding-bottom:75px;}
+.ES_logo{ background-color:#fff; padding-left:8px; height:65px; line-height:65px;}
+    .ES_logo span{ float:right; padding-right:8px;}
+    .jmtopnews{ height:40px; line-height:40px; border-radius:20px;   margin-top:5px; background:#6ec2f7 url(../Images/Notice_pic.png) no-repeat 10px center; margin:auto; background-size:20px 20px; width:95%; }
+    #tgBigox{
+    position: relative;
+    width:90%; margin:0 auto; height:40px; line-height:40px; margin-left:10%; overflow:hidden;
+}
+    #tgGoox{
+    position: absolute;
+    height:40px; line-height:40px;
+    top: 0px;
+    left:0;
+    
+}
+#tgGoox a{
+    color:#fff;
+    margin-left:8px;
+    font-size:15px;
+    float:left;
+}
+#tgGoox a:hover{
+    color:#fff;
+}
+.ES_titlebox{ margin:10px 5%;}
+.deption_title{ background:url(../Images/problem_pic.png) no-repeat left; background-size:30px 30px; color:#fff; font-size:14px; text-indent:35px; height:40px; line-height:40px;}
+.deption_title a{ color:#fff; font-size:14px;}
+.deption_title span{ float:right;}
+.deption_title1{ background-color:#fff;padding:20px 10px; margin-top:15px;  border-radius:10px; }
+    .deption_title1 .title1{ color:#222; font-size:14px; line-height:25px; text-indent:15px;}
+.contract_left{ float:left; margin-top:15px;color:#fff; height:40px; line-height:40px; width:48%; margin-right:2%;}
+    .contract_left a{ color:#fff; background-color:#30318B; width:100%; display:block; text-align:center; height:40px; line-height:40px; font-size:14px;}
+.contract_right{ float:left; margin-top:15px;  border:1px solid #30318B; text-align:center; height:38px; line-height:38px; width:47%; margin-left:2%;}
+    .contract_right a{ color:#30318B; font-size:14px;}
+.deption_title2{ margin-top:15px;}
+    .deption_title2 li{ float:left; width:31%; box-shadow: #6a6b6b 5px 5px 20px 5px ; background-color:#fff; border-radius:10px; margin:auto; padding:10px 0px;  text-align:center; margin-right:3%;}
+        .deption_title2 li a{ color:#757575; font-size:13px;}   
+     .deption_title2 li:nth-child(3){ margin-right:0px;}
+
+.navbox{ position:fixed; height:58px; border-top:1px solid #ccc; bottom:0; left:0; right:0; background:#F6F6F6; max-width:640px; margin:auto; z-index:9999;} 
+.navbox .navli{ width:50%; text-align:center; float:left; color:#555; box-sizing:border-box; position:relative; z-index:9999;}
+.navbox .navli .pnavNum{ position:absolute; left:50%; top:2px; border-radius:16px; width:16px; height:16px; line-height:16px; font-size:12px; background:#fb0488; color:#fff; }
+.navbox .navli .pnav,.navbox .navli .pnav1{ cursor:pointer; text-align:center; padding-top:5px; height:50px; }
+.navbox .navli .pnav .txt{ text-align:center; line-height:25px; height:25px; font-size:14px;}
+.navbox .navli .pnav a{ color:#555; display:block; }
+.navbox .navli .pnav1 .txt{ text-align:center; line-height:25px; height:25px; font-size:14px;}
+.navbox .navli .pnav1 a{ color:#555; }
+.navbox .navli .pnav .txt{ text-align:center; line-height:25px; height:25px; font-size:14px;}
+.navbox .navli .pnav a{ color:#555; }
+.navbox .navli .pnavCurr{ background:#EDEDEE; text-align:center; padding-top:5px; height:54px; }
+.navbox .navli .pnavCurr .txt{ text-align:center; line-height:25px; height:25px; font-size:14px; color:#2fa8f3;}
+.navbox .navli .pnavCurr a{ color:#db0606; }
+
+
+.navbox .navli .subnav {
+	position:absolute; 
+	left:0; 
+	bottom:56px; 
+	width:98%; 
+	background-color:#fff; 
+	border-left:1px solid #ccc; 
+	border-right:1px solid #ccc;  
+	-webkit-box-shadow: 0 0 5px rgba(50, 50, 50, .5);  
+	-moz-box-shadow: 0 0 5px rgba(50, 50, 50, .5);  
+	box-shadow: 0 0 5px rgba(50, 50, 50, .5);  
+	display:none;  
+	z-index:9999;
+	padding:0;
+
+}
+
+.navbox .navli .subnav ul li{ line-height:40px; border-top:1px solid #ccc; text-align:center; font-size:14px; } 
+.navbox .navli .subnav ul li a:link,.navbox .navli .subnav ul li a:visited{ display:block; color:#555; }
+.navbox .navli .subnav ul li a:hover{ color:#fe5301; }
+.staus_name{ position:relative; text-align:center; background-color:#2fa8f3; font-size:15px; color:#fff; height:50px; line-height:50px;}
+    .staus_name span{ position:absolute; left:8px;}
+.staus_name .xd_name{ position:absolute; right:8px; z-index:88; top:0px;}
+    .staus_name .xd_name a{ color:#fff; font-size:14px;}
+.ES_menu{ background-color:#2fa8f3; height:40px;}
+.ES_menu li{ float:left; width:50%; text-align:center;}
+    .ES_menu li a{  color:#ff300e; line-height:25px;}
+.ES_menu .db_hover a{ color:#fff; }
+.Pending{ background-color:#fff; height:40px; line-height:40px}
+    .Pending li{ float:left; width:33%; text-align:center;}
+
+.content{ width:600px; margin:0 auto;}
+.content .title{ font-size:14px; background:#dfdfdf; padding:10px; margin-bottom:10px;}
+.content .block{ width:100%; line-height:21px;}
+.content .block .star_score{ float:left;}
+.content .star_list{height:21px;margin:50px; line-height:21px;}
+.block p,.block .attitude{ padding-left:20px; line-height:21px; display:inline-block;}
+.block p span{ color:#C00; font-size:16px; font-family:Georgia, "Times New Roman", Times, serif;}
+.star_score { background:url(Images/stark2.png); width:160px; height:21px;  position:relative; }
+.star_score a{ height:21px; display:block; text-indent:-999em; position:absolute;left:0;}
+.star_score a:hover{ background:url(Images/stars2.png);left:0;}
+.star_score a.clibg{ background:url(Images/stars2.png);left:0;}
+#starttwo .star_score { background:url(../Images/starky.png); height:22px;}
+#starttwo .star_score a:hover{ background:url(../Images/starsy.png);left:0; height:22px;}
+#starttwo .star_score a.clibg{ background:url(../Images/starsy.png);left:0; height:22px;}
+/*星星样式*/
+.show_number{ padding-left:50px; padding-top:20px;}
+.show_number li{ width:240px; border:1px solid #ccc; padding:10px; margin-right:5px; margin-bottom:20px;}
+.atar_Show{background:url(Images/stark2.png); width:160px; height:21px;  position:relative; float:left; }
+.atar_Show p{ background:url(Images/stars2.png);left:0; height:21px; width:134px;}
+.show_number li span{ display:inline-block; line-height:21px;}
+.contract_box{ margin:5%; position:relative;}
+.contract_box .contract_pic{ background-color:#fff; margin-top:15px; border-radius:10px; padding:10px;}
+    .contract_box .contract_pic .title1{color:#f08519; height:30px; line-height:30px; font-size:14px;}
+    .contract_box .contract_pic .titleleft{color:#222; line-height:30px; font-size:14px;float:left; width:45%; }
+        .contract_box .contract_pic .titleright{ font-size:14px; line-height:30px; color:#808080;float:left; width:55%;}
+    .contract_box .contract_pic .new_pic{ position:absolute; top:0px;right:15px;}
+/*节点奖励*/
+    .none_name{ text-align:center;  font-size:15px; color:#fff; height:50px; line-height:50px;}
+    .none_name span{ position:absolute; left:5%;}
+.ES_nodebg{ background:url(../Images/node_banner.jpg) no-repeat; height:220px; background-size:100%;}
+.none_etcbox{ padding: 0px 20px; margin-top:15px; height:80px; line-height:25px; color:#fff; }
+    .none_etcbox .title1{ font-size:22px; }
+        .none_etcbox .title1 font{ font-size:15px; padding-left:5px;}
+    .none_etcbox .title2{ font-size:14px;}
+.none_etcboxleft{ float:left; width:45%; padding-left:5%;  font-size:14px; color:#fff; line-height:25px;}
+    .none_etcboxleft font{ font-size:13px; padding-left:5px;}
+.none_etcboxright{ float:left; width:45%; padding-right:5%; font-size:14px; color:#fff; line-height:25px;}
+.none_etcboxright font{ font-size:13px; padding-left:5px;}
+.my_share{ height:50px; line-height:50px; background-color:#fff; text-indent:5%; color:#222;}
+    .my_share span{ float:right; padding-right:5%;}
+.reward_list{ background-color:#fff; margin-top:15px; width:100%;}
+    .reward_list .table_name_eth{ width:33.3%; text-align:center; color:#222; font-size:15px; height:40px; line-height:40px; border-bottom:1px solid #ddd;}
+    .reward_list .table_name_eth_title{ height:40px; line-height:40px; font-size:14px; color:#6f6f6f; text-align:center;}
+
+    /*合约收益*/
+.Es_contractbox{ background-color:#fff; }
+.Es_contract_sy{ background:url(../Images/Contract_bg.png)no-repeat; height:280px; background-size:100%; }
+.contract_sy_etcbox{ padding-left:5%;  padding-bottom:10px; margin-top:15px; line-height:25px; color:#fff; }
+    .contract_sy_etcbox .title1{ font-size:22px; }
+        .contract_sy_etcbox .title1 font{ font-size:15px; padding-left:5px;}
+    .contract_sy_etcbox .title2{ font-size:14px;}
+.sy_list{ background:url(../Images/re_pic.png) no-repeat 20px; background-size:25px 25px; padding-top:5px; font-weight:bold; color:#222; height:40px; line-height:40px; font-size:16px; text-indent:30px; padding-left:5%; }
+.contract_sy_list{ background-color:#fff; margin-top:15px; }
+.content_title{ height:45px; line-height:45px; color:#222; font-size:14px;padding:0px 15px; border-bottom:1px solid #ddd;}
+.content_title font{ color:#8a8a8a; font-size:13px; padding-left:5px;}
+    .content_title span { float:right; color:#8a8a8a; font-size:13px;}
+
+.es_hybox{ padding:5px;background-color:#fff;}
+.es_hybox1{background-color:#fff; margin-top:10px; padding:5px;}
+.es_hybox1 .botton_title_name{border:none; background:none; background-color:#2886CF; height:25px; line-height:25px; color:#fff; border-radius:5px; padding:0px 5px; }
+.ES_hytitle1{  height:25px; line-height:25px; color:#222; font-size:15px; font-weight:bold;}
+.ES_hytitle2{  height:25px; line-height:25px; color:#222; font-size:15px; font-weight:bold;}
+.ES_hytitle3{ border-bottom:1px solid #f6f6f6;  height:45px; line-height:45px; color:#a9a9a9; font-size:14px;}
+.ES_hytitle4{ border-bottom:1px solid #f6f6f6;  line-height:30px; color:#a9a9a9; font-size:14px;}
+.botton_acc{ border:none; background:none; height:30px; line-height:30px; width:60%; border-radius:5px; border:1px solid #ccc}
+.botton_acc1{ border:none; background:none; height:30px; line-height:30px;  border-radius:5px; border:1px solid #ccc}
+.ES_yourbg{
+    position:fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    pointer-events: auto;}
+.ES_yourbox{ background-color:#fff; padding-bottom:15px; border-radius:10px;position: fixed; top:40%; left:5%; right:5%; min-height:100px;
+    font-size: 14px;
+    overflow: auto;
+    word-break: break-all;
+    color: #292929;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;}
+.status_title{ height:40px; line-height:40px; text-align:center; background-color:#2886cf; color:#fff; font-size:15px;}
+.status_titleleft{ float:left; width:40%;  padding:25px 5%;}
+    .status_titleleft .title1{ color:#f1540f; font-size:20px; height:30px; line-height:30px; text-indent:5px;}
+     .status_titleleft .title2{ color:#727272; font-size:14px; text-indent:25px; background:url(../Images/fx_tdpic1.png) no-repeat 5px; background-size:20px 20px;}
+.status_titleright{ float:left; width:40%;  padding:25px 5%;}
+    .status_titleright .title1{ color:#f1540f; font-size:20px;  height:30px;  line-height:30px; text-indent:5px;}
+     .status_titleright .title2{ color:#727272; font-size:14px; text-indent:25px; background:url(../Images/fx_tdpic2.png) no-repeat 5px; background-size:20px 20px;}
+.qr_colse{  width:65%; height:35px; line-height:35px; color:#fff; background-color:#2886cf; border-radius:15px; text-align:center; margin:auto;}
+.name_title{ text-align:center; font-size:15px; color:#333; height:40px; line-height:40px;}
+.es_des{ font-size:14px; color:#6c6b6b; padding:0px 5px;}
+.title_bg1{ background-color:#fff; padding:5px 5px;  line-height:25px; border-radius:5px;}
+.title_bg2{ background-color:#fff; margin-top:10px; padding:5px 5px;  line-height:25px;  border-radius:5px;}
+.title_bg3{ background-color:#fff; margin-top:10px; padding:5px 5px;  line-height:25px;  border-radius:5px;}
